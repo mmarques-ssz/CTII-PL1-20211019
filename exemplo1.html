@@ -1,0 +1,76 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Exemplo 2</title>
+
+    <script language="javascript">
+        function enviarDados()
+        {
+            var nome, cpf, sexo, prefixo, ec, msg, vac1, vac2;
+            nome = document.frmDados.txtNome.value;
+            cpf = document.getElementById("txtCPF").value;
+            sexo = document.frmDados.radSexo.value;
+            prefixo=(sexo=="M")?"Sr. ":"Sra. ";
+            ec = document.frmDados.lstEC.value;
+            vac1 = document.frmDados.chkVac1.checked;
+            vac2 = document.frmDados.chkVac2.checked;
+ 
+            /*
+            document.write("Nome: " + prefixo + nome + "<br>");
+            document.write("CPF: " + cpf + "<br>");
+            */
+           msg = prefixo + nome + ", CPF: " + cpf;
+
+           document.frmDados.txtFrmSaida.value = msg;
+           document.frmDados.chkTeste.checked = true;
+           
+           document.getElementById("txtSaidaNome").innerHTML = prefixo+nome;
+           document.getElementById("txtSaidaCPF").innerHTML = cpf;
+           document.getElementById("txtSaidaEC").innerHTML = ec;
+           document.getElementById("txtSaidaVac").innerHTML = "Vacina: 1ª dose (" + (vac1?"X":" ") + ") - 2ª dose (" +  (vac2?"X":" ") +")";
+
+
+    
+        }
+
+
+        function primeiraDose()
+        {
+            if (document.frmDados.chkVac1.checked)
+               document.getElementById("vacina2").innerHTML='<p id="vacina2"><input type="checkbox" name="chkVac2"  value="v2">2ª dose da vacina</p>';
+            else
+               document.getElementById("vacina2").innerHTML="";
+
+        }
+        
+    </script>
+  </head>
+<body>
+    <form name="frmDados">
+        Nome: <input type="text" name="txtNome" value="Marco Aurélio"><br>
+        CPF: <input type="text" id="txtCPF" value="111.222.333-44"><br>
+        Sexo: <input type="radio" name="radSexo" value="F" checked> Feminino - 
+              <input type="radio" name="radSexo" value="M"> Masculino<br>
+        Estado civil: 
+        <select name="lstEC">
+            <option value="S">Solteiro</option>
+            <option value="C">Casado</option>
+            <option value="V">Viúvo</option>
+            <option value="D">Divorciado</option>
+            <option value="O">Outros</option>
+        </select><br>
+        <p id="vacina1"><input type="checkbox" name="chkVac1" value="v1" checked onclick="primeiraDose();">1ª dose da vacina</p>
+        <p id="vacina2"><input type="checkbox" name="chkVac2" value="v2">2ª dose da vacina</p>
+        <input type="button" value="Enviar" onclick="enviarDados();">
+        <br><br>
+        <input type="text" name="txtFrmSaida" size="70" readonly>
+        <input type="checkbox" name="chkTeste" readonly>
+
+    </form>
+   <p id="txtSaidaNome"></p>
+   <p id="txtSaidaCPF"></p>
+   <p id="txtSaidaEC"></p>
+   <p id="txtSaidaVac"></p>
+   
+</body>
+</html>
