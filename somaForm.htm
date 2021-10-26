@@ -1,0 +1,32 @@
+<html>
+
+<head>
+  <title>Soma em JavaScript</title>
+
+  <script language="JavaScript">
+  function calcular()
+  {
+  var n1, n2, r;
+  n1 = parseFloat(document.frmEntrada.txtN1.value);
+  n2 = parseFloat(document.frmEntrada.txtN2.value);
+  r = n1 + n2;
+  //document.getElementById("alvo").innerHTML = "A soma dos números é " + r + "<br>";
+  document.write("A soma dos números é " + r + "<br>");
+  }
+  </script>
+
+</head>
+
+<body>
+
+<form name="frmEntrada">
+N1:<input type="text" name="txtN1" value="5"><br>
+N2:<input type="text" name="txtN2" value="5"><br>
+<input type="button" name="btnCalcular" value="Calcular" onClick="calcular()"><br>
+</form>
+
+<p id="alvo"></p>
+
+</body>
+
+</html>
